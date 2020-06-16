@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from importlib import import_module
 from logging import basicConfig, DEBUG, getLogger, StreamHandler
 from os import path
+import dashapp
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -15,7 +16,7 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    for module_name in ('base', 'forms', 'ui', 'home', 'tables', 'data', 'additional', 'base'):
+    for module_name in ('base', 'dash', 'forms', 'ui', 'home', 'tables', 'data', 'additional', 'base'):
         module = import_module('app.{}.routes'.format(module_name))
         app.register_blueprint(module.blueprint)
 
@@ -77,4 +78,5 @@ def create_app(config, selenium=False):
     configure_database(app)
     configure_logs(app)
     apply_themes(app)
+    dashapp.register_dashapps(app)
     return app
