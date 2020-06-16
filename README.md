@@ -87,3 +87,9 @@ This project shows:
     sudo docker-compose pull && sudo docker-compose build && sudo docker-compose up -d
 
 ### 3. Go to http://server_address, create an account and log in
+
+
+# Dash App
+- app/dash/templates/*.html : html files for hosting dash app, by using \<iframe>
+- dashapp/__init__.py : register_dashapps for loading dash app
+- dashapp/app?.py : dash app python code
